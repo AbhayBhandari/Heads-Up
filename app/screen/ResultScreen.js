@@ -10,11 +10,19 @@ import {
 } from "react-native";
 import React from "react";
 import Colors from "../../Colors";
+import * as ScreenOrientation from "expo-screen-orientation";
 
 let width = Dimensions.get("window").width;
 let height = Dimensions.get("window").height;
 
-export default function ResultScreen({ navigation, route }) {
+const handleExit = () => {
+  ScreenOrientation.unlockAsync();
+  BackHandler.exitApp();
+};
+
+export default function ResultScreen({ route }) {
+  ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE);
+
   return (
     <ImageBackground
       source={require("../../images/result-bgg.jpg")}
@@ -46,10 +54,7 @@ export default function ResultScreen({ navigation, route }) {
         </View>
       </View>
 
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => BackHandler.exitApp()}
-      >
+      <TouchableOpacity style={styles.button} onPress={() => handleExit()}>
         <Text style={styles.buttonText}>Exit</Text>
       </TouchableOpacity>
     </ImageBackground>
