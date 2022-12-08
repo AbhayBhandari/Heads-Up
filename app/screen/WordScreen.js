@@ -65,7 +65,7 @@ export default function WordScreen() {
   }, []);
 
   useEffect(() => {
-    if (time <= 100) {
+    if (time <= 0) {
       clearInterval(timerId.current);
       DeviceMotion.removeAllListeners();
       ScreenOrientation.unlockAsync();
