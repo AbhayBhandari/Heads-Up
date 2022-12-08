@@ -1,5 +1,4 @@
 import {
-  Button,
   StyleSheet,
   Text,
   View,
@@ -49,9 +48,9 @@ export default function ResultScreen({ navigation, route }) {
 
       <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate("Home")}
+        onPress={() => BackHandler.exitApp()}
       >
-        <Text style={styles.buttonText}>Replay</Text>
+        <Text style={styles.buttonText}>Exit</Text>
       </TouchableOpacity>
     </ImageBackground>
   );
