@@ -1,0 +1,4 @@
+1. Holding the device vertically should start the timer
+2. Twisting the phone upwards should show 'Pass' and change the word on the screen
+3. Twisting the phone downwards should show 'Correct' and change the word on the screen
+4. After the timer ends the screen should show how many words you got correct and how many you passed

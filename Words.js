@@ -1,0 +1,18 @@
+export default [
+  "Shahrukh Khan",
+  "Akshay Kumar",
+  "Salman Khan",
+  "Amitabh Bachchan",
+  "Ananya Pandey",
+  "Atif Aslam",
+  "Arijit Singh",
+  "Justin Bieber",
+  "Madonna",
+  "Eminem",
+  "Superman",
+  "Mickey Mouse",
+  "Winnie the Pooh",
+  "Mary Poppins",
+  "Peter Pan",
+  "Tony Stark",
+];
