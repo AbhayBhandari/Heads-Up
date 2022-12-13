@@ -2,62 +2,60 @@ import {
   StyleSheet,
   Text,
   View,
-  Dimensions,
   Image,
   ImageBackground,
   TouchableOpacity,
   BackHandler,
+  StatusBar,
 } from "react-native";
 import React from "react";
 import Colors from "../../Colors";
 import * as ScreenOrientation from "expo-screen-orientation";
 
-let width = Dimensions.get("window").width;
-let height = Dimensions.get("window").height;
-
-const handleExit = () => {
-  ScreenOrientation.unlockAsync();
-  BackHandler.exitApp();
-};
-
 export default function ResultScreen({ route }) {
-  ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE);
+  ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE_LEFT);
 
   return (
-    <ImageBackground
-      source={require("../../images/result-bgg.jpg")}
-      resizeMode="cover"
-      style={styles.container}
-    >
-      <Image
-        source={require("../../images/result.png")}
-        style={styles.resultImage}
-      />
-      <View style={{ flexDirection: "row", justifyContent: "space-evenly" }}>
-        <View style={{ flexDirection: "row", alignItems: "center" }}>
-          <Image
-            source={require("../../images/correct.png")}
-            style={styles.icon}
-          />
-          <Text style={styles.textStyle}>
-            Correct Words: {route.params.countCorrectWords}
-          </Text>
+    <>
+      <StatusBar hidden={true} />
+      <ImageBackground
+        source={require("../../images/result-bgg.jpg")}
+        resizeMode="cover"
+        style={styles.container}
+      >
+        <Image
+          source={require("../../images/result.png")}
+          style={styles.resultImage}
+        />
+        <View style={{ flexDirection: "row", justifyContent: "space-evenly" }}>
+          <View style={{ flexDirection: "row", alignItems: "center" }}>
+            <Image
+              source={require("../../images/correct.png")}
+              style={styles.icon}
+            />
+            <Text style={styles.textStyle}>
+              Correct Words: {route.params.countCorrectWords}
+            </Text>
+          </View>
+          <View style={{ flexDirection: "row", alignItems: "center" }}>
+            <Image
+              source={require("../../images/pass.png")}
+              style={styles.icon}
+            />
+            <Text style={styles.textStyle}>
+              Passed Words: {route.params.countPassWords}
+            </Text>
+          </View>
         </View>
-        <View style={{ flexDirection: "row", alignItems: "center" }}>
-          <Image
-            source={require("../../images/pass.png")}
-            style={styles.icon}
-          />
-          <Text style={styles.textStyle}>
-            Passed Words: {route.params.countPassWords}
-          </Text>
-        </View>
-      </View>
 
-      <TouchableOpacity style={styles.button} onPress={() => handleExit()}>
-        <Text style={styles.buttonText}>Exit</Text>
-      </TouchableOpacity>
-    </ImageBackground>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => BackHandler.exitApp()}
+        >
+          <Text style={styles.buttonText}>Exit</Text>
+        </TouchableOpacity>
+      </ImageBackground>
+    </>
   );
 }
 
@@ -84,15 +82,17 @@ const styles = StyleSheet.create({
   },
   icon: {
     resizeMode: "contain",
-    height: height / 9,
-    width: width / 8,
+    height: 50,
+    width: 50,
   },
 
   resultImage: {
     resizeMode: "contain",
-    width: width / 4,
-    height: height / 5,
+    width: 150,
+    height: 150,
     alignSelf: "center",
+    marginBottom: 60,
+    marginTop: 20,
   },
   textStyle: {
     fontFamily: "serif",
